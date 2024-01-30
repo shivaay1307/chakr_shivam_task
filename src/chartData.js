@@ -138,11 +138,15 @@ const Chart = () => {
 
   return (
     <div id="chart">
-      <ReactApexChart
-        options={chartState.options}
-        series={chartState.series}
-        type="area"
-      />
+      {chartState === undefined || chartState === null ? (
+        <h3>Loading . . .</h3>
+      ) : (
+        <ReactApexChart
+          options={chartState.options}
+          series={chartState.series}
+          type="area"
+        />
+      )}
       <div className="chart-select">
         <select name="cars" id="cars" className="select-style">
           <option value="volvo">Yearly</option>
