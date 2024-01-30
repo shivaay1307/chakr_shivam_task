@@ -10,8 +10,8 @@ const Card = ({ data }) => {
         <div className="number-container">
           <h1 className="number-on-card">{data?.numbers}</h1>
           <img
-            src={data?.icon1[data?.name1]}
-            alt={data?.name1}
+            src={data?.icon1}
+            alt="icon"
             className={
               data?.head !== "Quarter goal"
                 ? "image card-icon"
@@ -29,8 +29,8 @@ const Card = ({ data }) => {
         <Link to="#" className="card-link">
           <p className="link-text">{data?.link}</p>
           <img
-            src={data?.icon2[data?.name2]}
-            alt={data?.name2}
+            src={data?.icon2}
+            alt="icon"
             className=" image card-icon2"
           />
         </Link>

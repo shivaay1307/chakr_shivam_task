@@ -25,7 +25,7 @@ const CustomerCard = () => {
                     {i?.filtersType}
                   </span>
                 </p>
-                <img alt="icon" className="iamge down-image" src={i?.icon5[i?.name5]} />
+                <img alt="icon" className="iamge down-image" src={i?.icon5} />
               </div>
             </div>
             <div>
@@ -57,8 +57,8 @@ const CustomerCard = () => {
               <Link to="#" className="customer-link">
                 <p className="link-text">{i?.link}</p>
                 <img
-                  src={i?.icon2[i?.name2]}
-                  alt={i?.name2}
+                  src={i?.icon2}
+                  alt="icon"
                   className=" image card-icon2"
                 />
               </Link>
