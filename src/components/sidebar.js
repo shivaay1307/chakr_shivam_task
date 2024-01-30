@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import logoImage from "../assets/images/Logo.png";
 import search from "../assets/images/Icon=tabler-icon-search.svg";
 import "./components.css";
