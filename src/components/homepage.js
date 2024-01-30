@@ -3,8 +3,14 @@ import Sidebar from "./sidebar";
 import Card from "./card";
 import { cardData } from "../data";
 import CustomerCard from "./customerCard";
-import ChartCard from "./chartCard";
-import TopMonth, { Chats, Newdeals, TopYear, Topbyuer, Topstates } from "./topMonth";
+import TopMonth, {
+  Chats,
+  Newdeals,
+  TopYear,
+  Topbyuer,
+  Topstates,
+} from "./topMonth";
+import Chart from "../chartData";
 
 const HomePage = () => {
   return (
@@ -23,7 +29,9 @@ const HomePage = () => {
             flexWrap: "wrap",
           }}
         >
-          <ChartCard />
+          <div className="card card4">
+            <Chart />
+          </div>
           <TopMonth />
           <TopYear />
           <Topbyuer />

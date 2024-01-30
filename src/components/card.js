@@ -26,7 +26,7 @@ const Card = ({ data }) => {
         <p className="sub-head">{data?.subHead}</p>
       ) : ""}
       {(data && data?.link !== undefined) || data?.link !== null ? (
-        <Link to="#">
+        <Link to="#" className="card-link">
           <p className="link-text">{data?.link}</p>
           <img
             src={data?.icon2[data?.name2]}

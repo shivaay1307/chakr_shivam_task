@@ -13,12 +13,11 @@ p {
 }
 
 .home {
-    width: 100%;
+    max-width: 1500px;
     display: flex;
     flex-wrap: wrap;
     padding: 15px;
     font-family: "inter" !important;
-    background-color: #F6F6F3;
 }
 
 .after-sidebar {
@@ -265,7 +264,7 @@ image {
     margin-left: 8px;
 }
 
-.card a {
+.card-link {
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -526,17 +525,26 @@ image {
 
 .chart-select {
     position: relative;
-    top: -318px;
+    top: -320px;
     left: 200px;
     width: max-content;
 }
 .chart-select2{
     position: absolute;
-    top: 10px;
+    top: 40px;
     left: 50%;
     width: max-content;
 }
-
+.open-link{
+    position: relative;
+    top: -345px;
+    left: 380px;
+    width: max-content;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 16px;
+    border: 1px solid #FFF7E8;
+}
 .select-style {
     border: none;
     padding: 8px;
@@ -567,12 +575,6 @@ image {
 #chart{
     padding: 20px 0;
     width: 65%;
-}
-
-@media screen and (max-width: 1919px) {
-    .home {
-        width: 1500px;
-    }
 }
 
 @media screen and (max-width: 720px) {

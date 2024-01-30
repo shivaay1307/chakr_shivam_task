@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
 import data from "./dataset.csv";
 import "./App.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const parseCSV = (csvData) => {
   const lines = csvData.trim().split("\n");
@@ -35,18 +35,18 @@ const downsampleByAveraging = (data, factor, selectedOption) => {
     groupBy = (entry) => entry.Timestamp.getFullYear();
   } else if (selectedOption === "monthly") {
     groupBy = (entry) => entry.Timestamp.getMonth();
-  }else {
+  } else {
     for (let i = 0; i < newLength; i++) {
       const startIndex = i * factor;
       const endIndex = startIndex + factor;
       const group = data.slice(startIndex, endIndex);
-  
+
       const sum = group.reduce(
         (sum, entry) => sum + entry["Profit Percentage"],
         0
       );
       const average = sum / factor;
-  
+
       const lastEntry = group[group.length - 1];
       downsampledData.push({
         Timestamp: lastEntry.Timestamp.toLocaleDateString("en-US", {
@@ -59,7 +59,7 @@ const downsampleByAveraging = (data, factor, selectedOption) => {
     }
   }
 
-  if(groupBy){
+  if (groupBy) {
     const groupedData = data.reduce((acc, entry) => {
       const key = groupBy(entry);
       if (!acc[key]) {
@@ -68,7 +68,7 @@ const downsampleByAveraging = (data, factor, selectedOption) => {
       acc[key].push(entry);
       return acc;
     }, {});
-  
+
     for (const key in groupedData) {
       const group = groupedData[key];
       const sum = group.reduce(
@@ -76,7 +76,7 @@ const downsampleByAveraging = (data, factor, selectedOption) => {
         0
       );
       const average = sum / group.length;
-  
+
       const lastEntry = group[group.length - 1];
       downsampledData.push({
         Timestamp: lastEntry.Timestamp.toLocaleDateString("en-US", {
@@ -172,6 +172,53 @@ const Chart = () => {
     return null;
   }, [graphData]);
 
+  const chartState2 = useMemo(() => {
+    if (graphData?.length > 0) {
+      return {
+        series: [
+          {
+            name: "Growth",
+            data: graphData?.map((i) => Math.ceil(i["Profit Percentage"])),
+          },
+        ],
+        options: {
+          chart: {
+            type: "area",
+            toolbar: {
+              show: false,
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            curve: "straight",
+          },
+          title: {
+            text: "Growth",
+            align: "left",
+          },
+          labels: graphData?.map((i) => i["Timestamp"]),
+          xaxis: {
+            type: "datetime",
+          },
+          yaxis: [
+            {
+              opposite: false,
+              labels: {
+                align: "left",
+              },
+            },
+          ],
+          legend: {
+            horizontalAlign: "left",
+          },
+        },
+      };
+    }
+    return null;
+  }, [graphData]);
+
   const loadingElement = useMemo(() => <h3>Loading . . .</h3>, []);
 
   if (!chartState) {
@@ -180,11 +227,23 @@ const Chart = () => {
 
   return (
     <div id={location.pathname === "/chart" ? "chart" : ""}>
-      <ReactApexChart
-        options={chartState.options}
-        series={chartState.series}
-        type="area"
-      />
+      {location.pathname === "/chart" ? (
+        <div>
+          <ReactApexChart
+            options={chartState.options}
+            series={chartState.series}
+            type="area"
+          />
+        </div>
+      ) : (
+        <Link to="/chart">
+          <ReactApexChart
+            options={chartState2.options}
+            series={chartState2.series}
+            type="area"
+          />
+        </Link>
+      )}
       <div
         className={
           location.pathname === "/chart" ? "chart-select2" : "chart-select"
@@ -202,6 +261,14 @@ const Chart = () => {
           <option value="monthly">Monthly</option>
         </select>
       </div>
+      {location.pathname === "/chart" ? (
+        ""
+      ) : (
+        <Link to="/chart" className="open-link">
+          {" "}
+          Open graph{" "}
+        </Link>
+      )}
     </div>
   );
 };
