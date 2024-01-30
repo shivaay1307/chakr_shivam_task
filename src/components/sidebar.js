@@ -11,7 +11,7 @@ import mobileLogo from "../assets/images/mobile-logo.svg";
 
 const Sidebar = () => {
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [isPanelOpen, setPanelOpen] = useState(true);
+  const [isPanelOpen, setPanelOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!isSidebarCollapsed);

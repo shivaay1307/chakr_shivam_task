@@ -13,6 +13,7 @@ import TopMonth, {
 import Chart from "../chartData";
 
 const HomePage = () => {
+  
   return (
     <div className="home">
       <Sidebar />
