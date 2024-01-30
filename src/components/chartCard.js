@@ -1,11 +1,12 @@
 import React from 'react';
 import Chart from '../chartData';
+import { Link } from 'react-router-dom';
 
 const ChartCard = () => {
     return (
-        <div className='card card4'>
+        <Link to="/chart" className='card card4'>
             <Chart />
-        </div>
+        </Link>
     );
 }
 

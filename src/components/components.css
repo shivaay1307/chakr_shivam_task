@@ -16,8 +16,9 @@ p {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin: 15px;
+    padding: 15px;
     font-family: "inter" !important;
+    background-color: #F6F6F3;
 }
 
 .after-sidebar {
@@ -529,6 +530,12 @@ image {
     left: 200px;
     width: max-content;
 }
+.chart-select2{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: max-content;
+}
 
 .select-style {
     border: none;
@@ -555,6 +562,11 @@ image {
     outline: none;
     border: none !important;
     box-shadow: none;
+}
+
+#chart{
+    padding: 20px 0;
+    width: 65%;
 }
 
 @media screen and (max-width: 1919px) {
