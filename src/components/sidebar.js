@@ -5,21 +5,14 @@ import "./components.css";
 import { bottomTiles, sideBarTiles } from "../data";
 import profile from "../assets/images/Avatar.png";
 import menu from "../assets/images/menu.svg";
-import panelClose from "../assets/images/panel-right-close.svg";
-import panelOpen from "../assets/images/panel-right-open.svg";
-import mobileLogo from "../assets/images/mobile-logo.svg";
 
 const Sidebar = () => {
-  const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [isPanelOpen, setPanelOpen] = useState(false);
+  const [isSidebarCollapsed, setSidebarCollapsed] = useState(true);
 
   const toggleSidebar = () => {
     setSidebarCollapsed(!isSidebarCollapsed);
   };
 
-  const togglePannel = () => {
-    setPanelOpen(!isPanelOpen);
-  };
 
   return (
     <>
@@ -105,36 +98,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "flex-start" }}>
-        <div
-          className={`sidebar-container ${
-            isPanelOpen ? "pannelcollapsed" : ""
-          }`}
-        >
-          {isPanelOpen ? (
-            <div className="sidebar-small-containers2 mobile-panel">
-              <img
-                src={mobileLogo}
-                alt="logo"
-                className="image mobile-logo-image"
-              />
-              <img
-                src={search}
-                alt="search"
-                className="image search-image-mobile"
-              />
-              {sideBarTiles?.map((i, n) => {
-                return (
-                  <img
-                    key={n}
-                    src={i?.icon}
-                    alt={i?.name}
-                    className="image image-mobile"
-                  />
-                );
-              })}
-            </div>
-          ) : (
-            <>
+        <div className="sidebar-container">
               <div className="sidebar-small-containers2">
                 <img src={logoImage} alt="logo" className="image logo-image" />
                 <div className="search-container">
@@ -210,15 +174,7 @@ const Sidebar = () => {
                   );
                 })}
               </div>
-            </>
-          )}
         </div>
-        <img
-          src={isPanelOpen ? panelOpen : panelClose}
-          alt="logo"
-          className="image menuimage2"
-          onClick={togglePannel}
-        />
       </div>
     </>
   );

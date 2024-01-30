@@ -37,9 +37,9 @@ const HomePage = () => {
           <TopYear />
           <Topbyuer />
         </div>
-        <Chats />
-        <Topstates />
-        <Newdeals />
+        <Chats /> 
+       <Topstates /> 
+       <Newdeals />
       </div>
     </div>
   );

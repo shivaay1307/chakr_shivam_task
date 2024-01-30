@@ -228,7 +228,7 @@ const Chart = () => {
   return (
     <div id={location.pathname === "/chart" ? "chart" : ""}>
       {location.pathname === "/chart" ? (
-        <div>
+        <div style={{margin: "0 auto"}}>
           <ReactApexChart
             options={chartState.options}
             series={chartState.series}
